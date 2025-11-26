@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>บุคลากรแผนกช่างยนต์</title>
+
+<style>
+    body {
+        font-family: "Tahoma", sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    /* กล่องรูปแบบการ์ด */
+    .card {
+        background: white;
+        border-radius: 12px;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 18px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+        width: 160px;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .name {
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .position {
+        font-size: 14px;
+        color: #444;
+    }
+
+    /* หัวหน้าภาคคนเดียวใหญ่ */
+    .leader {
+        width: 250px;
+        margin: 0 auto 40px auto;
+    }
+
+    /* กริดบุคลากร */
+    .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+
+    justify-items: center;   /* ← จัดให้รูป/การ์ดอยู่ตรงกลาง */
+}
+
+
+    /* หัวข้อหมวด */
+    .section-title {
+        font-size: 22px;
+        margin: 40px 0 15px;
+        font-weight: bold;
+        border-left: 5px solid #444;
+        padding-left: 10px;
+    }
+</style>
+</head>
+<body>
+
+<h1>บุคลากรแผนกวิชาช่างยนต์</h1>
+
+<!-- หัวหน้าภาค -->
+<div class="leader card">
+    <img src="head.jpg" alt="">
+    <div class="name">นายสมชาย ตัวอย่าง</div>
+    <div class="position">หัวหน้าแผนกวิชาช่างยนต์</div>
+</div>
+
+<!-- หมวด: อาจารย์ -->
+<div class="section-title">อาจารย์</div>
+<div class="grid">
+    <div class="card">
+        <img src="t1.jpg">
+        <div class="name">นายตัวอย่าง คนที่ 1</div>
+        <div class="position">อาจารย์ประจำแผนก</div>
+    </div>
+
+    <div class="card">
+        <img src="t2.jpg">
+        <div class="name">นายตัวอย่าง คนที่ 2</div>
+        <div class="position">อาจารย์ประจำแผนก</div>
+    </div>
+
+    <!-- คัดลอก card เพิ่มได้ตามต้องการ -->
+</div>
+
+<!-- หมวด: เจ้าหน้าที่บริหารงาน -->
+<div class="section-title">เจ้าหน้าที่บริหารงาน</div>
+<div class="grid">
+    <div class="card">
+        <img src="s1.jpg">
+        <div class="name">นายตัวอย่าง คนที่ 3</div>
+        <div class="position">เจ้าหน้าที่บริหารงาน</div>
+    </div>
+</div>
+
+<!-- หมวด: ช่างผู้ช่วย -->
+<div class="section-title">ผู้ช่วยช่าง</div>
+<div class="grid" >
+    <div class="card">
+        <img src="m1.jpg">
+        <div class="name">นายตัวอย่าง คนที่ 4</div>
+        <div class="position">ผู้ช่วยช่าง</div>
+    </div>
+
+    <div class="card">
+        <img src="m2.jpg">
+        <div class="name">นายตัวอย่าง คนที่ 5</div>
+        <div class="position">ผู้ช่วยช่าง</div>
+    </div>
+</div>
+
+</body>
+</html>
