@@ -5,17 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>กิจกรรม ช่างยนต์</title>
 <style>
-    body {
-        font-family: "Tahoma", sans-serif;
-        background: #c53e3e;
-        margin: 0;
-        padding: 20px;
+    /* สไตล์สำหรับส่วน Header */
+    .header {
+        /* ใช้สีแดงเข้มตามภาพที่คุณแนบมา */
+        background-color: #A52A2A; 
+        color: white; 
+        padding: 15px 20px; 
+        text-align: left; 
+        width: 100%; /* ให้ Header กว้างเต็ม */
+        box-sizing: border-box; /* รวม padding ในความกว้าง */
     }
 
-    .title {
+    .header-title {
         font-size: 26px;
-        margin-bottom: 20px;
         font-weight: bold;
+        margin: 0; /* ลบ margin รอบข้อความ */
+    }
+    
+    /* สไตล์สำหรับส่วนอื่นๆ */
+    body {
+        font-family: "Tahoma", sans-serif;
+        background: #f5f5f5; /* เปลี่ยนกลับเป็นสีพื้นหลังอ่อน เพื่อให้ Gallery ดูชัดเจน */
+        margin: 0;
+        padding: 0; /* ลบ padding ออก เพื่อให้ Header ติดขอบด้านบน */
+    }
+
+    .gallery-container {
+        padding: 20px; /* เพิ่ม padding รอบ Gallery แทน body */
+        background: #f5f5f5;
+    }
+
+    /* .title เดิม ถูกแทนที่ด้วย .header/header-title แล้ว */
+    .title {
+        display: none; 
     }
 
     .gallery {
@@ -53,42 +75,48 @@
 </head>
 <body>
 
-<div class="title">กิจกรรม ช่างยนต์</div>
-
-<div class="gallery">
-    <div class="card">
-        <img src="imah/p0.jpg" alt="กิจกรรมประกวดร้องเพลง">
-        <div class="card-title">กิจกรรมประกวดร้องเพลง</div>
-    </div>
-
-    <div class="card">
-        <img src="imah/p1.jpg" alt="Yamaha Presentation 2012">
-        <div class="card-title">Yamaha Presentation 2012</div>
-    </div>
-
-    <div class="card">
-        <img src="imah/p2.jpg" alt="Honda ขับขี่ปลอดภัย">
-        <div class="card-title">Honda ขับขี่ปลอดภัย</div>
-    </div>
+<div class="header">
+    <p class="header-title">กิจกรรม ช่างยนต์</p>
+</div>
+<div class="gallery-container">
     
-    <div class="card">
-        <img src="imah/p3.jpg" alt="โครงการขับขี่ปลอดภัย">
-        <div class="card-title">โครงการขับขี่ปลอดภัย</div>
-    </div>
+    <div class="title" style="display: none;">กิจกรรม ช่างยนต์</div>
 
-    <div class="card">
-        <img src="imah/p4.jpg" alt="ประกวดวงดนตรี">
-        <div class="card-title">ประกวดวงดนตรี (คปอ)</div>
-    </div>
+    <div class="gallery">
+        <div class="card">
+            <img src="imah/p0.jpg" alt="กิจกรรมประกวดร้องเพลง">
+            <div class="card-title">กิจกรรมประกวดร้องเพลง</div>
+        </div>
 
-    <div class="card">
-        <img src="imah/p5.jpg" alt="แสดงมุทิตาจิต 2554">
-        <div class="card-title">แสดงมุทิตาจิต 2554</div>
-    </div>
+        <div class="card">
+            <img src="imah/p1.jpg" alt="Yamaha Presentation 2012">
+            <div class="card-title">Yamaha Presentation 2012</div>
+        </div>
 
-    <div class="card">
-        <img src="imah/p6.jpg" alt="สถานการณ์น้ำท่วม ช่างยนต์ 2554">
-        <div class="card-title">สถานการณ์น้ำท่วม ช่างยนต์ 2554</div>
+        <div class="card">
+            <img src="imah/p2.jpg" alt="Honda ขับขี่ปลอดภัย">
+            <div class="card-title">Honda ขับขี่ปลอดภัย</div>
+        </div>
+        
+        <div class="card">
+            <img src="imah/p3.jpg" alt="โครงการขับขี่ปลอดภัย">
+            <div class="card-title">โครงการขับขี่ปลอดภัย</div>
+        </div>
+
+        <div class="card">
+            <img src="imah/p4.jpg" alt="ประกวดวงดนตรี">
+            <div class="card-title">ประกวดวงดนตรี (คปอ)</div>
+        </div>
+
+        <div class="card">
+            <img src="imah/p5.jpg" alt="แสดงมุทิตาจิต 2554">
+            <div class="card-title">แสดงมุทิตาจิต 2554</div>
+        </div>
+
+        <div class="card">
+            <img src="imah/p6.jpg" alt="สถานการณ์น้ำท่วม ช่างยนต์ 2554">
+            <div class="card-title">สถานการณ์น้ำท่วม ช่างยนต์ 2554</div>
+        </div>
     </div>
 </div>
 
