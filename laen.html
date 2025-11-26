@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>หลักสูตรการเรียน ช่างยนต์</title>
+
+<style>
+    /* สไตล์สำหรับส่วน Header ใหม่ */
+    .header {
+        /* ใช้สีแดงเข้ม (#A52A2A) ให้เข้ากับหน้าอื่นๆ */
+        background-color: #A52A2A; 
+        color: white; 
+        padding: 15px 20px; 
+        width: 100%; 
+        box-sizing: border-box; 
+    }
+
+    .header-title {
+        font-size: 26px;
+        font-weight: bold;
+        margin: 0; 
+        text-align: center; /* จัดชื่อหลักสูตรอยู่ตรงกลาง */
+    }
+
+    /* สไตล์สำหรับ Body และ Container */
+    body {
+        font-family: "Tahoma", sans-serif;
+        background: #f5f5f5; /* เปลี่ยนสีพื้นหลังเป็นเทาอ่อน เพื่อให้ Header และ Container เด่น */
+        margin: 0;
+        padding: 0; /* ลบ padding ออกจาก body */
+    }
+
+    .container {
+        background: white;
+        /* ปรับ padding ด้านบนเพื่อให้มีระยะห่างจาก Header เล็กน้อยเมื่อหน้าจอใหญ่ แต่ส่วนใหญ่จะใช้ margin-top */
+        padding: 30px; 
+        border-radius: 12px;
+        max-width: 900px;
+        /* margin-top ถูกกำหนดจาก padding-top ของ body ใน CSS เดิม แต่เราใช้ margin: 30px auto; แทนเพื่อให้มีระยะห่างด้านบนและจัดกึ่งกลาง */
+        margin: 30px auto; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* ซ่อน h1 เดิม */
+    h1 {
+        display: none;
+    }
+
+    p {
+        line-height: 1.7;
+        font-size: 16px;
+    }
+
+    .section-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 30px;
+        margin-bottom: 10px;
+        border-left: 5px solid #A52A2A; /* เปลี่ยนสีเส้นให้เข้ากับ Header */
+        padding-left: 10px;
+    }
+
+    ul {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+</style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-title">หลักสูตรการศึกษา แผนกวิชาช่างยนต์</div>
+</div>
+<div class="container">
+
+    <h1>หลักสูตรการศึกษา แผนกวิชาช่างยนต์</h1>
+
+    <p>
+        วิทยาลัยเทคนิคเลย แผนกวิชาช่างยนต์ มีหลักสูตรระดับ <b>ประกาศนียบัตรวิชาชีพ (ปวช.)</b> และ
+        <b>ประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)</b> โดยหลักสูตรจะเน้นทักษะการปฏิบัติจริง เช่น การซ่อมบำรุงเครื่องยนต์
+        การใช้เครื่องมือและอุปกรณ์ช่างยนต์สมัยใหม่ การซ่อมระบบไฟฟ้า และอื่น ๆ เพื่อให้ผู้เรียนสามารถประกอบอาชีพในสายงานช่างยนต์ได้อย่างมีประสิทธิภาพ
+    </p>
+
+    <div class="section-title">หลักสูตรที่เปิดสอน</div>
+    <ul>
+        <li><b>ระดับประกาศนียบัตรวิชาชีพ (ปวช.):</b> เน้นความรู้พื้นฐานและทักษะการปฏิบัติงานช่างยนต์</li>
+        <li><b>ระดับประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.):</b> เนื้อหาลึกขึ้น มีการแบ่งสาขาย่อย เช่น งานเทคนิคยานยนต์ เพื่อตอบสนองงานอุตสาหกรรม</li>
+    </ul>
+
+    <div class="section-title">เนื้อหาหลักสูตรโดยทั่วไป</div>
+    <ul>
+        <li>งานเครื่องยนต์เล็กและเครื่องยนต์ดีเซล</li>
+        <li>งานระบบส่งกำลังและเครื่องล่างรถยนต์</li>
+        <li>งานระบบไฟฟ้าและอิเล็กทรอนิกส์ในรถยนต์</li>
+        <li>งานซ่อมบำรุงและบำรุงรักษารถยนต์</li>
+        <li>การใช้เทคโนโลยีสมัยใหม่ เช่น ระบบหัวฉีดอิเล็กทรอนิกส์</li>
+    </ul>
+
+</div>
+
+</body>
+</html>
