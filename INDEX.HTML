@@ -12,7 +12,7 @@
            ========================================= */
         :root {
             --bg-color: #ede4e4;          /* พื้นหลังเทานวล */
-            --main-red: #8D021F;          /* แดงเลือดนก */
+            --main-red: #A52A2A;          /* แดงเลือดนก */
             --text-dark: #333333;
             --text-light: #666666;
             --white: #ffffff;
@@ -37,14 +37,14 @@
         ul { list-style: none; padding: 0; }
 
         /* =========================================
-           2. ส่วนหัวเว็บ (Header) - ปรับเป็นสีแดงตามคำขอ
+           2. ส่วนหัวเว็บ (Header)
            ========================================= */
         header {
-            background-color: var(--main-red); /* เปลี่ยนพื้นหลังเป็นสีแดง */
-            color: var(--white);              /* ตัวหนังสือสีขาว */
+            background-color: var(--main-red);
+            color: var(--white);
             padding: 15px 0;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            position: sticky; /* ให้เมนูติดด้านบนเวลาเลื่อน */
+            position: sticky;
             top: 0;
             z-index: 1000;
         }
@@ -53,7 +53,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap; /* รองรับมือถือให้ตกลงมา */
+            flex-wrap: wrap;
             gap: 20px;
         }
 
@@ -61,42 +61,42 @@
         .logo-area h1 {
             margin: 0;
             font-size: 1.8rem;
-            color: var(--white); /* สีขาว */
+            color: var(--white);
             line-height: 1.2;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         .logo-area span {
             font-size: 0.9rem;
-            color: #f0f0f0;      /* สีขาวจางๆ นิดหน่อย */
+            color: #f0f0f0;
             opacity: 0.9;
         }
 
         /* เมนูนำทาง */
         .main-nav ul {
             display: flex;
-            gap: 5px; /* ระยะห่างระหว่างปุ่มเมนู */
+            gap: 5px;
             margin: 0;
         }
         .main-nav a {
-            color: var(--white); /* สีขาว */
+            color: var(--white);
             font-weight: 500;
-            padding: 8px 15px;
+            padding: 10px 18px;
             border-radius: 4px;
             font-size: 1rem;
+            border: 1px solid transparent;
         }
         .main-nav a:hover {
-            background-color: rgba(255, 255, 255, 0.2); /* พื้นหลังจางๆ เวลาเอาเมาส์ชี้ */
-            color: #fff;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
         /* =========================================
            3. ภาพปก (Hero Banner)
            ========================================= */
         .hero-banner {
-            /* ใส่รูปภาพปกจริงตรงนี้ */
             background-color: #333; 
-            /* ตัวอย่างรูปจาก Unsplash (เปลี่ยนเป็นรูปจริงของคุณได้เลย) */
+            /* ใส่รูปภาพปก */
             background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80'); 
             background-size: cover;
             background-position: center;
@@ -118,11 +118,10 @@
         }
 
         /* =========================================
-           4. หัวข้อส่วนต่างๆ
+           4. สไตล์ทั่วไป (Sections)
            ========================================= */
-        .section-padding {
-            padding: 60px 0;
-        }
+        .section-padding { padding: 60px 0; }
+        
         .section-title {
             color: var(--main-red);
             border-left: 6px solid var(--main-red);
@@ -132,18 +131,14 @@
             font-weight: 800;
         }
 
-        /* =========================================
-           5. ส่วนข่าว (News)
-           ========================================= */
+        /* News Grid */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
 
-        /* =========================================
-           6. ส่วนจุดเด่น (Highlights)
-           ========================================= */
+        /* Highlights */
         .highlight-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -160,9 +155,7 @@
         .highlight-card h3 { color: #222; margin-top: 0; }
         .highlight-card p { color: var(--text-light); font-size: 0.95rem; }
 
-        /* =========================================
-           7. ส่วนอาชีพ (Career)
-           ========================================= */
+        /* Career */
         .career-container {
             display: flex;
             flex-wrap: wrap;
@@ -190,9 +183,7 @@
             font-weight: bold;
         }
         
-        /* =========================================
-           8. ส่วนท้าย (Footer)
-           ========================================= */
+        /* Footer */
         footer {
             background-color: #2d2d2d;
             color: #bbb;
@@ -207,7 +198,7 @@
         }
         .footer-col h3 { color: var(--white); border-bottom: 2px solid var(--main-red); display: inline-block; padding-bottom: 5px; }
 
-        /* Responsive มือถือ */
+        /* Responsive */
         @media (max-width: 768px) {
             .header-inner { justify-content: center; text-align: center; }
             .main-nav ul { flex-wrap: wrap; justify-content: center; }
@@ -226,11 +217,13 @@
             
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#">หน้าแรก</a></li>
-                    <li><a href="#">เกี่ยวกับเรา</a></li>
-                    <li><a href="#">หลักสูตร</a></li>
-                    <li><a href="#">บุคลากร</a></li>
-                    <li><a href="#">ติดต่อเรา</a></li>
+                    <li><a href="index.html">หน้าแรก</a></li>
+                    
+                    <li><a href="laen.html">หลักสูตร</a></li> 
+                    
+                    <li><a href="preple.html">บุคลากร</a></li>
+                    
+                    <li><a href="imag.html">ภาพกิจกรรม</a></li>
                 </ul>
             </nav>
         </div>

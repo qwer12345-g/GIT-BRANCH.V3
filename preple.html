@@ -4,51 +4,92 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>บุคลากรแผนกช่างยนต์</title>
+<!-- นำเข้าฟอนต์ Google Fonts (Sarabun) -->
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-    /* สไตล์สำหรับส่วน Header ใหม่ */
+    /* ตั้งค่าฟอนต์หลัก */
+    body {
+        font-family: 'Sarabun', sans-serif; /* ใช้ฟอนต์ Sarabun */
+        margin: 0;
+        padding: 0;
+        background: #f5f5f5;
+    }
+
+    /* สไตล์สำหรับส่วน Header (ปรับปรุงให้รองรับเมนู) */
     .header {
-        /* ใช้สีแดงเข้มที่เคยปรับในคำถามที่แล้ว */
-        background-color: #A52A2A; 
+        background-color: #A52A2A; /* สีแดงเข้ม */
         color: white; 
         padding: 15px 20px; 
-        text-align: left; 
         width: 100%; 
         box-sizing: border-box; 
+        
+        /* Flexbox สำหรับจัดชื่อและเมนู */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* รองรับมือถือ */
+        gap: 15px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        position: sticky; /* ติดด้านบน */
+        top: 0;
+        z-index: 1000;
     }
 
     .header-title {
-        font-size: 26px;
+        font-size: 24px;
         font-weight: bold;
-        margin: 0; 
-        text-align: center; /* จัดให้อยู่ตรงกลางตาม h1 เดิม */
+        margin: 0;
     }
 
-    /* สไตล์สำหรับ Body และเนื้อหาหลัก */
-    body {
-        font-family: "Tahoma", sans-serif;
+    /* --- ส่วนเมนูนำทาง --- */
+    .nav-menu ul {
         margin: 0;
-        padding: 0; /* ลบ padding ออกจาก body */
-        background: #f5f5f5; /* เปลี่ยนเป็นสีพื้นหลังอ่อน เพื่อให้ card และ header เด่น */
+        padding: 0;
+        list-style: none;
+        display: flex;
+        gap: 10px;
     }
+
+    .nav-menu a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px 15px;
+        border-radius: 5px;
+        transition: 0.3s;
+        border: 1px solid transparent;
+        font-size: 16px;
+    }
+
+    .nav-menu a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    /* -------------------- */
     
     .content-container {
-        padding: 20px; /* ย้าย padding มาที่ container เพื่อเว้นขอบรอบเนื้อหา */
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
     h1 {
-        /* ซ่อน h1 เดิม */
-        display: none;
+        display: none; /* ซ่อน h1 เดิม */
     }
 
     /* กล่องรูปแบบการ์ด */
     .card {
         background: white;
         border-radius: 12px;
-        padding: 15px;
+        padding: 20px;
         text-align: center;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         transition: 0.3s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .card:hover {
@@ -61,58 +102,91 @@
         height: 220px;
         object-fit: cover;
         border-radius: 10px;
+        margin-bottom: 10px;
+        background-color: #ddd; /* สีกันไว้เผื่อรูปโหลดไม่ได้ */
     }
 
     .name {
         font-weight: bold;
         margin-top: 10px;
+        font-size: 1.1rem;
+        color: #333;
     }
 
     .position {
-        font-size: 14px;
-        color: #444;
+        font-size: 0.95rem;
+        color: #666;
+        margin-top: 5px;
     }
 
     /* หัวหน้าภาคคนเดียวใหญ่ */
     .leader {
-        width: 250px;
-        margin: 0 auto 40px auto;
+        width: 280px; /* ปรับขนาดให้สมดุล */
+        margin: 20px auto 50px auto;
+        border-top: 5px solid #A52A2A; /* เพิ่มขอบสีแดงให้เด่น */
     }
 
     /* กริดบุคลากร */
     .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 25px;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* ปรับขนาดขั้นต่ำ */
+        gap: 30px;
         justify-items: center; 
     }
 
     /* หัวข้อหมวด */
     .section-title {
         font-size: 22px;
-        margin: 40px 0 15px;
+        margin: 40px 0 20px;
         font-weight: bold;
-        border-left: 5px solid #A52A2A; /* เปลี่ยนสีเส้นให้เข้ากับ Header */
-        padding-left: 10px;
+        border-left: 5px solid #A52A2A;
+        padding-left: 15px;
+        color: #A52A2A;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .header {
+            flex-direction: column;
+            text-align: center;
+        }
+        .nav-menu ul {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
     }
 </style>
 </head>
 <body>
 
+<!-- ส่วน Header พร้อมปุ่มเมนู -->
 <div class="header">
     <div class="header-title">บุคลากรแผนกวิชาช่างยนต์</div>
+    
+    <!-- เมนูนำทาง -->
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="laen.html">หลักสูตร</a></li>
+            <li><a href="preple.html" style="background-color: rgba(255,255,255,0.2);">บุคลากร</a></li> <!-- ไฮไลท์หน้านี้ -->
+            <li><a href="imag.html">ภาพกิจกรรม</a></li>
+        </ul>
+    </nav>
 </div>
+
 <div class="content-container">
     
-    <h1>บุคลากรแผนกวิชาช่างยนต์</h1>
+    <h1>บุคลากรแผนกวิชาช่างยนต์</h1> <!-- ซ่อนไว้ -->
 
+    <!-- หัวหน้าแผนก -->
     <div class="leader card">
         <img src="imah/72.jpg" alt="รูปหัวหน้าแผนก">
         <div class="name">นายสมชาย ตัวอย่าง</div>
         <div class="position">หัวหน้าแผนกวิชาช่างยนต์</div>
-        <div class="name">089-2760254</div>
+        <div class="position" style="color: #A52A2A;">089-2760254</div>
     </div>
 
+    <!-- อาจารย์ -->
     <div class="section-title">อาจารย์</div>
     <div class="grid">
         <div class="card">
@@ -126,8 +200,9 @@
             <div class="name">นายตัวอย่าง คนที่ 2</div>
             <div class="position">อาจารย์ประจำแผนก</div>
         </div>
-        </div>
+    </div>
 
+    <!-- พนักงานราชการ -->
     <div class="section-title">พนักงานราชการ</div>
     <div class="grid">
         <div class="card">
@@ -143,8 +218,9 @@
         </div>
     </div>
 
+    <!-- ครูอัตราจ้าง -->
     <div class="section-title">ครูอัตราจ้าง</div>
-    <div class="grid" >
+    <div class="grid">
         <div class="card">
             <img src="imah/6.jpg" alt="รูปครูอัตราจ้างคนที่ 4">
             <div class="name">นายตัวอย่าง คนที่ 4</div>

@@ -4,45 +4,81 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>หลักสูตรการเรียน ช่างยนต์</title>
+<!-- นำเข้าฟอนต์ Google Fonts (Sarabun) เพื่อให้สวยเหมือนหน้าหลัก -->
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-    /* สไตล์สำหรับส่วน Header ใหม่ */
+    /* ตั้งค่าฟอนต์หลัก */
+    body {
+        font-family: 'Sarabun', sans-serif; /* ใช้ฟอนต์ Sarabun ให้เหมือนหน้าแรก */
+        background: #f5f5f5; /* สีพื้นหลังเทาอ่อน */
+        margin: 0;
+        padding: 0;
+    }
+
+    /* สไตล์สำหรับส่วน Header (ปรับปรุงให้รองรับเมนู) */
     .header {
-        /* ใช้สีแดงเข้ม (#A52A2A) ให้เข้ากับหน้าอื่นๆ */
-        background-color: #A52A2A; 
+        background-color: #A52A2A; /* สีแดงเข้ม */
         color: white; 
         padding: 15px 20px; 
         width: 100%; 
         box-sizing: border-box; 
+        
+        /* Flexbox สำหรับจัดชื่อและเมนู */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* รองรับมือถือ */
+        gap: 15px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        position: sticky; /* ติดด้านบน */
+        top: 0;
+        z-index: 1000;
     }
 
     .header-title {
-        font-size: 26px;
+        font-size: 24px; /* ปรับขนาดให้พอดี */
         font-weight: bold;
-        margin: 0; 
-        text-align: center; /* จัดชื่อหลักสูตรอยู่ตรงกลาง */
-    }
-
-    /* สไตล์สำหรับ Body และ Container */
-    body {
-        font-family: "Tahoma", sans-serif;
-        background: #f5f5f5; /* เปลี่ยนสีพื้นหลังเป็นเทาอ่อน เพื่อให้ Header และ Container เด่น */
         margin: 0;
-        padding: 0; /* ลบ padding ออกจาก body */
     }
 
+    /* --- ส่วนเมนูนำทาง --- */
+    .nav-menu ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        gap: 10px;
+    }
+
+    .nav-menu a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px 15px;
+        border-radius: 5px;
+        transition: 0.3s;
+        border: 1px solid transparent;
+        font-size: 16px;
+    }
+
+    .nav-menu a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    /* -------------------- */
+
+    /* สไตล์ Container เนื้อหา */
     .container {
         background: white;
-        /* ปรับ padding ด้านบนเพื่อให้มีระยะห่างจาก Header เล็กน้อยเมื่อหน้าจอใหญ่ แต่ส่วนใหญ่จะใช้ margin-top */
         padding: 30px; 
         border-radius: 12px;
         max-width: 900px;
-        /* margin-top ถูกกำหนดจาก padding-top ของ body ใน CSS เดิม แต่เราใช้ margin: 30px auto; แทนเพื่อให้มีระยะห่างด้านบนและจัดกึ่งกลาง */
-        margin: 30px auto; 
+        margin: 30px auto; /* จัดกึ่งกลาง */
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    /* ซ่อน h1 เดิม */
+    /* ซ่อน h1 เดิมเพราะมีใน Header แล้ว */
     h1 {
         display: none;
     }
@@ -50,31 +86,63 @@
     p {
         line-height: 1.7;
         font-size: 16px;
+        color: #333;
     }
 
     .section-title {
         font-size: 20px;
         font-weight: bold;
         margin-top: 30px;
-        margin-bottom: 10px;
-        border-left: 5px solid #A52A2A; /* เปลี่ยนสีเส้นให้เข้ากับ Header */
-        padding-left: 10px;
+        margin-bottom: 15px;
+        border-left: 5px solid #A52A2A; /* ขีดแดงด้านหน้า */
+        padding-left: 15px;
+        color: #A52A2A;
     }
 
     ul {
         font-size: 16px;
         line-height: 1.7;
+        color: #333;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .header {
+            flex-direction: column;
+            text-align: center;
+        }
+        .nav-menu ul {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .container {
+            margin: 20px;
+            padding: 20px;
+        }
     }
 </style>
 </head>
 <body>
 
+<!-- ส่วน Header พร้อมปุ่มเมนู -->
 <div class="header">
-    <div class="header-title">หลักสูตรการศึกษา แผนกวิชาช่างยนต์</div>
+    <div class="header-title">หลักสูตร แผนกวิชาช่างยนต์</div>
+    
+    <!-- เมนูนำทาง -->
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="laen.html" style="background-color: rgba(255,255,255,0.2);">หลักสูตร</a></li> <!-- ไฮไลท์หน้านี้ -->
+            <li><a href="preple.html">บุคลากร</a></li>
+            <li><a href="imag.html">ภาพกิจกรรม</a></li>
+        </ul>
+    </nav>
 </div>
+
 <div class="container">
 
-    <h1>หลักสูตรการศึกษา แผนกวิชาช่างยนต์</h1>
+    <!-- เนื้อหาหลักสูตร (คงเดิม) -->
+    <h1>หลักสูตรการศึกษา แผนกวิชาช่างยนต์</h1> <!-- ซ่อนไว้ด้วย CSS -->
 
     <p>
         วิทยาลัยเทคนิคเลย แผนกวิชาช่างยนต์ มีหลักสูตรระดับ <b>ประกาศนียบัตรวิชาชีพ (ปวช.)</b> และ

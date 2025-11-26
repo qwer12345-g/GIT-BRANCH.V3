@@ -4,46 +4,81 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>กิจกรรม ช่างยนต์</title>
+<!-- นำเข้าฟอนต์ Google Fonts (Sarabun) เพื่อให้สวยเหมือนหน้าหลัก -->
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;800&display=swap" rel="stylesheet">
+
 <style>
+    /* ตั้งค่าฟอนต์หลัก */
+    body {
+        font-family: 'Sarabun', sans-serif; /* ใช้ฟอนต์ Sarabun ให้เหมือนหน้าแรก */
+        background: #f5f5f5;
+        margin: 0;
+        padding: 0;
+    }
+
     /* สไตล์สำหรับส่วน Header */
     .header {
-        /* ใช้สีแดงเข้มตามภาพที่คุณแนบมา */
-        background-color: #A52A2A; 
+        background-color: #A52A2A; /* สีแดงเข้มตามที่คุณกำหนด */
         color: white; 
         padding: 15px 20px; 
-        text-align: left; 
-        width: 100%; /* ให้ Header กว้างเต็ม */
-        box-sizing: border-box; /* รวม padding ในความกว้าง */
+        width: 100%; 
+        box-sizing: border-box; 
+        
+        /* เพิ่ม Flexbox เพื่อจัดชื่ออยู่ซ้าย ปุ่มอยู่ขวา */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* รองรับมือถือ */
+        gap: 15px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        position: sticky; /* ให้เมนูติดด้านบน */
+        top: 0;
+        z-index: 1000;
     }
 
     .header-title {
-        font-size: 26px;
+        font-size: 24px;
         font-weight: bold;
-        margin: 0; /* ลบ margin รอบข้อความ */
-    }
-    
-    /* สไตล์สำหรับส่วนอื่นๆ */
-    body {
-        font-family: "Tahoma", sans-serif;
-        background: #f5f5f5; /* เปลี่ยนกลับเป็นสีพื้นหลังอ่อน เพื่อให้ Gallery ดูชัดเจน */
         margin: 0;
-        padding: 0; /* ลบ padding ออก เพื่อให้ Header ติดขอบด้านบน */
     }
+
+    /* --- ส่วนเมนูนำทางที่เพิ่มเข้ามา --- */
+    .nav-menu ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        gap: 10px;
+    }
+
+    .nav-menu a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px 15px;
+        border-radius: 5px;
+        transition: 0.3s;
+        border: 1px solid transparent;
+        font-size: 16px;
+    }
+
+    .nav-menu a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    /* ---------------------------------- */
 
     .gallery-container {
-        padding: 20px; /* เพิ่ม padding รอบ Gallery แทน body */
-        background: #f5f5f5;
-    }
-
-    /* .title เดิม ถูกแทนที่ด้วย .header/header-title แล้ว */
-    .title {
-        display: none; 
+        padding: 20px;
+        max-width: 1200px; /* จำกัดความกว้างไม่ให้รูปกระจายเกินไป */
+        margin: 0 auto;
     }
 
     .gallery {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* ขยายขนาดการ์ดนิดหน่อย */
+        gap: 25px;
+        padding-top: 10px;
     }
 
     .card {
@@ -52,6 +87,7 @@
         overflow: hidden;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         transition: 0.3s;
+        cursor: pointer;
     }
 
     .card:hover {
@@ -61,27 +97,50 @@
 
     .card img {
         width: 100%;
-        height: 180px;
+        height: 200px; /* ปรับความสูงรูปให้สมดุล */
         object-fit: cover;
+        display: block; /* ลบช่องว่างใต้ภาพ */
     }
 
     .card-title {
-        padding: 12px;
+        padding: 15px;
         font-size: 16px;
         font-weight: bold;
         text-align: center;
+        color: #333;
+    }
+
+    /* Responsive สำหรับมือถือ */
+    @media (max-width: 768px) {
+        .header {
+            flex-direction: column;
+            text-align: center;
+        }
+        .nav-menu ul {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
     }
 </style>
 </head>
 <body>
 
+<!-- ส่วน Header พร้อมปุ่มเมนู -->
 <div class="header">
-    <p class="header-title">กิจกรรม ช่างยนต์</p>
-</div>
-<div class="gallery-container">
+    <div class="header-title">กิจกรรม ช่างยนต์</div>
     
-    <div class="title" style="display: none;">กิจกรรม ช่างยนต์</div>
+    <!-- เมนูนำทาง -->
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="laen.html">หลักสูตร</a></li>
+            <li><a href="preple.html">บุคลากร</a></li>
+            <li><a href="imag.html" style="background-color: rgba(255,255,255,0.2);">ภาพกิจกรรม</a></li> <!-- ไฮไลท์หน้าปัจจุบัน -->
+        </ul>
+    </nav>
+</div>
 
+<div class="gallery-container">
     <div class="gallery">
         <div class="card">
             <img src="imah/p0.jpg" alt="กิจกรรมประกวดร้องเพลง">
