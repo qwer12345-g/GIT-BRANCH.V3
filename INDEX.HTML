@@ -1,14 +1,322 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>แผนกวิชาช่างยนต์ - วิทยาลัยเทคนิค</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           1. การตั้งค่าสีและฟอนต์ (Variables)
+           ========================================= */
+        :root {
+            --bg-color: #ede4e4;          /* พื้นหลังเทานวล */
+            --main-red: #8D021F;          /* แดงเลือดนก */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Sarabun', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a { text-decoration: none; transition: 0.3s; }
+        ul { list-style: none; padding: 0; }
+
+        /* =========================================
+           2. ส่วนหัวเว็บ (Header) - ปรับเป็นสีแดงตามคำขอ
+           ========================================= */
+        header {
+            background-color: var(--main-red); /* เปลี่ยนพื้นหลังเป็นสีแดง */
+            color: var(--white);              /* ตัวหนังสือสีขาว */
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: sticky; /* ให้เมนูติดด้านบนเวลาเลื่อน */
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* รองรับมือถือให้ตกลงมา */
+            gap: 20px;
+        }
+
+        /* โลโก้และชื่อแผนก */
+        .logo-area h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--white); /* สีขาว */
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .logo-area span {
+            font-size: 0.9rem;
+            color: #f0f0f0;      /* สีขาวจางๆ นิดหน่อย */
+            opacity: 0.9;
+        }
+
+        /* เมนูนำทาง */
+        .main-nav ul {
+            display: flex;
+            gap: 5px; /* ระยะห่างระหว่างปุ่มเมนู */
+            margin: 0;
+        }
+        .main-nav a {
+            color: var(--white); /* สีขาว */
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .main-nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* พื้นหลังจางๆ เวลาเอาเมาส์ชี้ */
+            color: #fff;
+        }
+
+        /* =========================================
+           3. ภาพปก (Hero Banner)
+           ========================================= */
+        .hero-banner {
+            /* ใส่รูปภาพปกจริงตรงนี้ */
+            background-color: #333; 
+            /* ตัวอย่างรูปจาก Unsplash (เปลี่ยนเป็นรูปจริงของคุณได้เลย) */
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80'); 
+            background-size: cover;
+            background-position: center;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 0;
+        }
+
+        /* =========================================
+           4. หัวข้อส่วนต่างๆ
+           ========================================= */
+        .section-padding {
+            padding: 60px 0;
+        }
+        .section-title {
+            color: var(--main-red);
+            border-left: 6px solid var(--main-red);
+            padding-left: 15px;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        /* =========================================
+           5. ส่วนข่าว (News)
+           ========================================= */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* =========================================
+           6. ส่วนจุดเด่น (Highlights)
+           ========================================= */
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .highlight-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            border-top: 5px solid var(--main-red);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .highlight-icon { font-size: 2.5rem; display: block; margin-bottom: 15px; }
+        .highlight-card h3 { color: #222; margin-top: 0; }
+        .highlight-card p { color: var(--text-light); font-size: 0.95rem; }
+
+        /* =========================================
+           7. ส่วนอาชีพ (Career)
+           ========================================= */
+        .career-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .career-intro { flex: 1; min-width: 300px; }
+        .career-list-box {
+            flex: 1.5;
+            min-width: 300px;
+            background: var(--white);
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .job-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #ddd;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .job-list li::before {
+            content: "✔";
+            color: var(--main-red);
+            font-weight: bold;
+        }
+        
+        /* =========================================
+           8. ส่วนท้าย (Footer)
+           ========================================= */
+        footer {
+            background-color: #2d2d2d;
+            color: #bbb;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 5px solid var(--main-red);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .footer-col h3 { color: var(--white); border-bottom: 2px solid var(--main-red); display: inline-block; padding-bottom: 5px; }
+
+        /* Responsive มือถือ */
+        @media (max-width: 768px) {
+            .header-inner { justify-content: center; text-align: center; }
+            .main-nav ul { flex-wrap: wrap; justify-content: center; }
+            .hero-content h2 { font-size: 2rem; }
+        }
+    </style>
 </head>
 <body>
-    
 
+    <header>
+        <div class="container header-inner">
+            <div class="logo-area">
+                <h1>แผนกวิชาช่างยนต์</h1>
+                <span>วิทยาลัยเทคนิค................. | Automotive Department</span>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">หน้าแรก</a></li>
+                    <li><a href="#">เกี่ยวกับเรา</a></li>
+                    <li><a href="#">หลักสูตร</a></li>
+                    <li><a href="#">บุคลากร</a></li>
+                    <li><a href="#">ติดต่อเรา</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h2>สร้างช่างฝีมือ สู่มาตรฐานสากล</h2>
+            <p>เรียนรู้จริง ปฏิบัติจริง ด้วยเครื่องมือทันสมัย และเทคโนโลยีที่ก้าวหน้า</p>
+        </div>
+    </section>
+
+    <section class="container section-padding">
+        <h2 class="section-title">ข่าวประชาสัมพันธ์</h2>
+        <div class="news-grid">
+            <p style="color: #777;">(พื้นที่สำหรับแสดงข่าวประชาสัมพันธ์)</p>
+        </div>
+    </section>
+
+    <section class="container section-padding" style="padding-top: 0;">
+        <h2 class="section-title">จุดเด่นของสาขาวิชา</h2>
+        <div class="highlight-grid">
+            <div class="highlight-card">
+                <span class="highlight-icon">⚙️</span>
+                <h3>เทคโนโลยีทันสมัย</h3>
+                <p>เป็นสาขาที่ได้เรียนรู้เทคโนโลยีที่ทันสมัย มีการพัฒนาอย่างต่อเนื่อง อุปกรณ์ได้รับการสนับสนุนจากสถานประกอบการยานยนต์ชั้นนำ ผลิตบุคลากรที่มีความรู้ทั้งเครื่องกลและคอมพิวเตอร์เพื่อการใช้งานจริง</p>
+            </div>
+            <div class="highlight-card">
+                <span class="highlight-icon">🔧</span>
+                <h3>ทักษะจากความหลงใหล</h3>
+                <p>เหมาะสำหรับผู้ที่ชื่นชอบเครื่องยนต์กลไก การสร้าง และการดัดแปลง เราส่งเสริมการพัฒนาและการวิจัยที่ต้องใช้ความหลากหลายในเชิงวิศวกรรมศาสตร์และเทคโนโลยี</p>
+            </div>
+            <div class="highlight-card">
+                <span class="highlight-icon">📈</span>
+                <h3>ตลาดแรงงานต้องการสูง</h3>
+                <p>“ช่างยนต์” เป็นอาชีพยอดนิยมที่มีอัตราการเติบโตสูง เนื่องจากทุกครอบครัวมีรถยนต์ที่ต้องบำรุงรักษาตามระยะ โอกาสก้าวหน้าจึงมีมาก และสามารถประกอบธุรกิจส่วนตัวได้ง่าย</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background-color: #e3dada;">
+        <div class="container">
+            <div class="career-container">
+                <div class="career-intro">
+                    <h2 class="section-title" style="border-left:none; padding-left:0;">เส้นทางอาชีพในอนาคต</h2>
+                    <p>เมื่อจบการศึกษาสามารถเข้าทำงานในสถานประกอบการ หรือองค์กรของรัฐในหลายด้าน รวมถึงงานด้านวิจัยพัฒนาผลิตภัณฑ์ด้านเทคโนโลยีสมัยใหม่ เพื่อรองรับความต้องการของโลกในอนาคต</p>
+                    <p style="font-weight: bold; color: var(--main-red); margin-top: 20px;">
+                        🎓 สามารถศึกษาต่อในระดับปริญญาตรีและระดับที่สูงขึ้นได้
+                    </p>
+                </div>
+                
+                <div class="career-list-box">
+                    <h3 style="margin-top: 0; color: var(--main-red);">อาชีพที่รองรับ:</h3>
+                    <ul class="job-list">
+                        <li>นายช่างประจำศูนย์บริการ</li>
+                        <li>ผู้ช่วยวิศวกรโรงงาน / พนักงานตรวจซ่อมเครื่องกล</li>
+                        <li>พนักงานซ่อมบำรุงเครื่องยนต์ (รัฐ/เอกชน)</li>
+                        <li>เจ้าของกิจการซ่อมบำรุงเครื่องยนต์ / อู่รถ</li>
+                        <li>เจ้าของกิจการคาร์แคร์</li>
+                        <li>เจ้าของกิจการเต๊นท์รถ</li>
+                        <li>เจ้าของกิจการจำหน่ายอะไหล่รถ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>แผนกวิชาช่างยนต์</h3>
+                <p>วิทยาลัยเทคนิค.................<br>
+                123 ถนน........ ตำบล.......<br>
+                อำเภอ....... จังหวัด....... 10xxx</p>
+            </div>
+            <div class="footer-col">
+                <h3>ติดต่อเรา</h3>
+                <p>📞 โทรศัพท์: 02-xxx-xxxx<br>
+                📧 อีเมล: auto_tech@college.ac.th<br>
+                Facebook: แผนกวิชาช่างยนต์ วท...</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px; font-size: 0.8rem; color: #777;">
+            &copy; 2025 Automotive Department. All Rights Reserved.
+        </div>
+    </footer>
+
 </body>
 </html>
